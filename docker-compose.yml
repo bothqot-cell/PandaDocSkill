@@ -1,0 +1,29 @@
+version: '3.9'
+services:
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: otbay
+      POSTGRES_PASSWORD: otbay
+      POSTGRES_DB: otbay_pandadoc
+    ports:
+      - '5432:5432'
+    volumes:
+      - db_data:/var/lib/postgresql/data
+  app:
+    build: .
+    environment:
+      NODE_ENV: development
+      PORT: 3000
+      DATABASE_URL: postgres://otbay:otbay@db:5432/otbay_pandadoc
+      LOG_LEVEL: info
+    ports:
+      - '3000:3000'
+    depends_on:
+      - db
+    command: npm run dev
+    volumes:
+      - .:/app
+      - /app/node_modules
+volumes:
+  db_data:
