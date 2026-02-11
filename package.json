@@ -10,7 +10,8 @@
     "lint": "eslint . --ext .ts",
     "test": "jest",
     "migrate": "ts-node scripts/migrate.ts",
-    "seed:salesperson": "ts-node scripts/onboardSalesperson.ts"
+    "seed:salesperson": "ts-node scripts/onboardSalesperson.ts",
+    "setup": "ts-node scripts/setup.ts"
   },
   "dependencies": {
     "axios": "^1.6.8",
